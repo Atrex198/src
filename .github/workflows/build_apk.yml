@@ -34,6 +34,14 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Configure rclone
+        run: |
+          mkdir -p $HOME/.config/rclone
+          echo "[cache]" > $HOME/.config/rclone/rclone.conf
+          echo "type = sftp" >> $HOME/.config/rclone/rclone.conf
+          echo "host = ${{ secrets.STORAGE_HOST }}" >> $HOME/.config/rclone/rclone.conf
+          echo "user = ${{ secrets.STORAGE_USER }}" >> $HOME/.config/rclone/rclone.conf
+          echo "pass = ${{ secrets.STORAGE_PASS }}" >> $HOME/.config/rclone/rclone.conf
       - name: Start ssh-agent
         uses: webfactory/ssh-agent@v0.5.3
         with:
