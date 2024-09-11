@@ -154,7 +154,7 @@ jobs:
           echo 'type = sftp' >> $HOME/.config/rclone/rclone.conf
           echo 'host = ${{ secrets.STORAGE_HOST }}' >> $HOME/.config/rclone/rclone.conf
           echo 'user = storage' >> $HOME/.config/rclone/rclone.conf
-          echo 'key_pem = ${{ secrets.STORAGE_KEY }}' >> $HOME/.config/rclone/rclone.conf
+          echo 'key_pem = ${{ ssecrets.SSH_PRIVATE_KEY }}' >> $HOME/.config/rclone/rclone.conf
 
       - name: Creating cache folder on /dev/disk/azure/resource-part1 (SSD)
         run: |
@@ -202,7 +202,7 @@ jobs:
           echo 'type = sftp' >> $HOME/.config/rclone/rclone.conf
           echo 'host = ${{ secrets.STORAGE_HOST }}' >> $HOME/.config/rclone/rclone.conf
           echo 'user = storage' >> $HOME/.config/rclone/rclone.conf
-          echo 'key_pem = ${{ secrets.STORAGE_KEY }}' >> $HOME/.config/rclone/rclone.conf
+          echo 'key_pem = ${{ ssecrets.SSH_PRIVATE_KEY }}' >> $HOME/.config/rclone/rclone.conf
 
       - name: Checking available disk-space before build
         run: df -h
@@ -358,7 +358,7 @@ jobs:
           echo 'type = sftp' >> $HOME/.config/rclone/rclone.conf
           echo 'host = ${{ secrets.STORAGE_HOST }}' >> $HOME/.config/rclone/rclone.conf
           echo 'user = storage' >> $HOME/.config/rclone/rclone.conf
-          echo 'key_pem = ${{ secrets.STORAGE_KEY }}' >> $HOME/.config/rclone/rclone.conf
+          echo 'key_pem = ${{ ssecrets.SSH_PRIVATE_KEY }}' >> $HOME/.config/rclone/rclone.conf
 
       - name: Creating release
         id: create_release
